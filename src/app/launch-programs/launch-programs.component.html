@@ -1,0 +1,146 @@
+<div class="container-fluid">
+  <div class="row mb-2 mt-2">
+    <div class="column column-12">
+      <h2 class="card-title">SpaceX Launch Programs</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column column-2" style="padding-right: 0; padding-left: 0;">
+      <div class="card">
+        <div class="card-body p-2">
+          <div class="row">
+            <div class="column column-12">
+              <label for=""> Filters</label>
+            </div>
+            <div class="column column-12 text-center p-0">
+              <div class="text-center">Launch year</div>
+              <hr class="mt-0 mb-1" />
+              <div class="row">
+                <div
+                  class="column column-6 p-0"
+                  *ngFor="let item of launchYears"
+                >
+                  <span
+                    class="badge badge-success pb-1 pl-3 pr-3 pt-1"
+                    (click)="selectYear(item)"
+                    [class.selected]="filter.Year === item"
+                    >{{item}}</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="column column-12 text-center mb-2 p-0">
+              <div class="text-center">Successful Launch</div>
+              <hr class="mt-0 mb-1" />
+              <div class="row">
+                <div class="column column-6 p-0">
+                  <span
+                    class="badge badge-success pb-1 pl-3 pr-3 pt-1"
+                    (click)="selectLaunch('True')"
+                    [class.selected]="filter.SuccessLaunch === 'True' && filter.SuccessLaunch !== undefined"
+                    >True</span
+                  >
+                </div>
+                <div class="column column-6 p-0">
+                  <span
+                    class="badge badge-success pb-1 pl-3 pr-3 pt-1"
+                    (click)="selectLaunch('False')"
+                    [class.selected]="filter.SuccessLaunch  === 'False' && filter.SuccessLaunch !== undefined"
+                    >False</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="column column-12 text-center p-0">
+              <div class="text-center">Successful Landing</div>
+              <hr class="mt-0 mb-1" />
+              <div class="row">
+                <div class="column column-6 p-0">
+                  <span
+                    class="badge badge-success pb-1 pl-3 pr-3 pt-1"
+                    (click)="selectLanding('True')"
+                    [class.selected]="filter.SuccessLanding  === 'True' && filter.SuccessLanding !== undefined"
+                    >True</span
+                  >
+                </div>
+                <div class="column column-6 p-0">
+                  <span
+                    class="badge badge-success pb-1 pl-3 pr-3 pt-1"
+                    (click)="selectLanding('False')"
+                    [class.selected]="filter.SuccessLanding  === 'False' && filter.SuccessLanding !== undefined"
+                    >False</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column column-10">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="column column-3" *ngFor="let item of launchPrograms">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="bg-light column column-12 p-3 rounded">
+                      <img
+                        class="img-fluid"
+                        [src]="item.links.mission_patch"
+                        alt=""
+                      />
+                    </div>
+                    <div class="column column-12 p-0">
+                      <span class="text-info">
+                        <b
+                          >{{item.mission_name}} #{{item.flight_number}}</b
+                        ></span
+                      >
+                    </div>
+                    <div class="column column-12 p-0">
+                      <span> <b>Mission Id's : </b></span>
+                      <ul style="padding: 0px 15px;">
+                        <li
+                          class="text-info"
+                          *ngFor="let ids of item.mission_id"
+                        >
+                          {{ids}}
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="column column-12 p-0">
+                      <span>
+                        <b>Launch Year : </b>
+                        <span class="text-info"
+                          >{{item.launch_year}}</span
+                        ></span
+                      >
+                    </div>
+                    <div class="column column-12 p-0">
+                      <span>
+                        <b>Successful Launch : </b>
+                        <span class="text-info">
+                          {{item.launch_success}}</span
+                        ></span
+                      >
+                    </div>
+                    <div class="column column-12 p-0">
+                      <span>
+                        <b>Successful Landing : </b>
+                        <span class="text-info">
+                          {{item.launch_landing}}</span
+                        ></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
