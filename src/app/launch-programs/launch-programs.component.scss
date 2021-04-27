@@ -1,0 +1,13 @@
+div {
+  span {
+    color: black;
+    &.badge {
+      &.badge-success {
+        background-color: #a4f973 !important;
+        &.selected {
+          background-color: #59ca18 !important;
+        }
+      }
+    }
+  }
+}
